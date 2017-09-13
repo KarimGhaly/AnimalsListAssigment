@@ -19,15 +19,10 @@ import java.util.List;
  */
 
 public class CustomAdapter extends ArrayAdapter<Animals> {
-    Context context;
-    int resource;
-    ArrayList<Animals> animalsList;
 
-    public CustomAdapter(Context context1, int resource1, ArrayList<Animals> animalsList) {
-        super(context1, resource1, animalsList);
-        this.context = context1;
-        this.resource = resource1;
-        this.animalsList = animalsList;
+
+    public CustomAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Animals> animalsList) {
+        super(context, resource, animalsList);
     }
 
     @NonNull
@@ -78,7 +73,7 @@ public class CustomAdapter extends ArrayAdapter<Animals> {
 
     @Override
     public int getItemViewType(int position) {
-        Animals a =  animalsList.get(position);
+        Animals a = getItem(position);
         return a.getViewType();
     }
 }
